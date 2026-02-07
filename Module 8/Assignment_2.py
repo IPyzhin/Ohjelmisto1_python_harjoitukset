@@ -25,9 +25,9 @@ def run_country_program(country_code):
 
     if result:
         for rivi in result:
-            typ = rivi[0]
-            if typ in output:
-                output[typ] += 1
+            type = rivi[0]
+            if type in output:
+                output[type] += 1
 
         print(f"\n\nAirports in {country_code.upper()}:")
         for typ, count in output.items():

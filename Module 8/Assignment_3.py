@@ -20,8 +20,8 @@ def get_airport_coordinates(code):
 
 
 def run_airport_distance():
-    code1 = input("Enter the ICAO code of the first airport: ").strip().upper()
-    code2 = input("Enter the ICAO code of the second airport: ").strip().upper()
+    code1 = input("Enter the ICAO code of the first airport: ").upper()
+    code2 = input("Enter the ICAO code of the second airport: ").upper()
     coords1 = get_airport_coordinates(code1)
     coords2 = get_airport_coordinates(code2)
 
