@@ -10,7 +10,7 @@ connect = mysql.connector.connect(
 )
 
 def get_airports_by_country(country_code):
-    query = ("SELECT type FROM airport WHERE iso_country = %s and scheduled_service='yes'")
+    query = ("SELECT type FROM airport WHERE iso_country = %s")
     cursor = connect.cursor()
     cursor.execute(query, (country_code.upper(),))
     result = cursor.fetchall()
