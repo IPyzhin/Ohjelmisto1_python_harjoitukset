@@ -29,13 +29,13 @@ def run_country_program(country_code):
             if typ in output:
                 output[typ] += 1
 
-        print(f"\nAirports in {country_code.upper()}:")
+        print(f"\n\nAirports in {country_code.upper()}:")
         for typ, count in output.items():
             if count > 0:
                 print(f"{count} {typ} airports")
         return output
     else:
-        print(f"No airports found for country code '{country_code.upper()}'")
+        print(f"No airports found for country code '{country_code.upper()}'.")
         return output
 
 code = input("Enter the country code (e.g., FI for Finland): ").upper()
