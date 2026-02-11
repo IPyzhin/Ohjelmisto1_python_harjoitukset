@@ -12,25 +12,28 @@ yhteys = mysql.connector.connect(
 
 
 def get_airport_coordinates(code):
-    city1 = (f"SELECT latitude_deg, longitude_deg FROM airport WHERE ident = '{code.upper()}'")
     cursor = yhteys.cursor()
-    cursor.execute(city1)
+    query = "SELECT latitude_deg, longitude_deg FROM airport WHERE ident = %s"
+    cursor.execute(query, (code.upper(),))
     coords = cursor.fetchone()
     return coords
 
 
-def run_airport_distance(code1, code2):
+def run_airport_distance():
+    code1 = input("Enter the ICAO code of the first airport: ").upper()
+    code2 = input("Enter the ICAO code of the second airport: ").upper()
     coords1 = get_airport_coordinates(code1)
     coords2 = get_airport_coordinates(code2)
-    if not coords1:
+
+    if coords1 is None:
         print(f"Airport with ICAO code {code1} not found in the database.")
-    if not coords2:
+        return
+    if coords2 is None:
         print(f"Airport with ICAO code {code2} not found in the database.")
-    if coords1 and coords2:
-        distance = geodesic(coords1, coords2).kilometers
-        print(f"Distance between {code1} and {code2}: {distance:.2f}")
+        return
+
+    distance = geodesic(coords1, coords2).kilometers
+    print(f"\n\nDistance between {code1} and {code2}: {distance:.2f} kilometers")
 
 
-code1 = input("Enter the ICAO code of the first airport: ").upper()
-code2 = input("Enter the ICAO code of the second airport: ").upper()
-run_airport_distance(code1, code2)
+run_airport_distance()
