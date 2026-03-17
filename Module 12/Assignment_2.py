@@ -21,6 +21,7 @@ import requests
 import json
 
 city_name = input("Enter municipality name: ")
+app_id = "your app_id"
 coords_request = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name}&limit=1&appid={app_id}"
 try:
     response = requests.get(coords_request)
