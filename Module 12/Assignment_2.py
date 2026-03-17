@@ -1,7 +1,7 @@
 import requests
 
 q = input("Enter municipality name: ")
-app_id = "596992968244cc2ae6bbceae22cdade1"
+app_id = "your app_id"
 weather_request = f"https://api.openweathermap.org/data/2.5/weather?q={q}&units=metric&appid={app_id}"
 try:
     weather_response = requests.get(weather_request)
